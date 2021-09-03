@@ -75,7 +75,7 @@ public class ToscaTemplateTest {
      */
     @Test
     public void test() throws JsonProcessingException, UnsupportedEncodingException, IOException {
-        FileInputStream in = new FileInputStream(downloadFile("https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/application_example_planed.yaml"));
+        FileInputStream in = new FileInputStream(downloadFile("https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/TIC_ec2_wf_with_bank.yaml"));
         MultipartFile file = new MockMultipartFile("file", in);
         byte[] bytes = file.getBytes();
         String ymlStr = new String(bytes, "UTF-8");

@@ -79,7 +79,7 @@ public class ToscaHelperTest {
         File file = File.createTempFile("application_example_2_topologies", ".yaml");
         file.deleteOnExit();
         FileUtils.copyURLToFile(
-                new URL("https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/application_example_2_topologies.yaml"),
+                new URL("https://raw.githubusercontent.com/qcdis-sdia/sdia-tosca/master/examples/TIC_ec2_wf_with_bank.yaml"),
                 file);
 
         byte[] bytes = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
