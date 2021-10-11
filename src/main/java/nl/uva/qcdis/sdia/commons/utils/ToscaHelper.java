@@ -385,8 +385,14 @@ public class ToscaHelper {
                 if (userKeyPair.containsKey("protocol") && userKeyPair.get("protocol").equals("ssh")) {
                     Map<String, Object> keysMap = (Map<String, Object>) userKeyPair.get("keys");
                     JSch jsch = new JSch();
-                    byte[] privatekeyBytes = Base64.getDecoder().decode(((String) keysMap.get("private_key")));
-                    byte[] publicKeyBytes = Base64.getDecoder().decode(((String) keysMap.get("public_key")));
+                    String privKey = (String) keysMap.get("private_key");
+                    privKey = privKey.trim();
+                    privKey = privKey.replaceAll("[\n\r]", "");
+                    byte[] privatekeyBytes = Base64.getDecoder().decode(privKey);
+                    String publicKey = (String) keysMap.get("public_key");
+                    publicKey = publicKey.trim();
+                    publicKey = publicKey.replaceAll("[\n\r]", "");
+                    byte[] publicKeyBytes = Base64.getDecoder().decode(publicKey);
                     KeyPair keyPair = KeyPair.load(jsch, privatekeyBytes, publicKeyBytes);
                     keyPair.dispose();
                     return keyPair;

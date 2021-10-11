@@ -223,12 +223,9 @@ public class ToscaHelperTest {
 
             }
             instance.uploadToscaTemplate(toscaTemplateWithCredentials);
-            NodeTemplate topology_1 = toscaTemplateWithCredentials.getTopologyTemplate().getNodeTemplates().get("topology_1");
-            Map<String, Object> attributes = topology_1.getAttributes();
-            assertNotNull(attributes);
-            assertNotNull(attributes.get("credentials"));
+
             NodeTemplate topology = toscaTemplateWithCredentials.getTopologyTemplate().getNodeTemplates().get("topology");
-            attributes = topology.getAttributes();
+            Map<String, Object> attributes = topology.getAttributes();
             assertNotNull(attributes);
             assertNotNull(attributes.get("credentials"));
 
@@ -290,6 +287,7 @@ public class ToscaHelperTest {
 
     /**
      * Test of getVMNumOfCores method, of class ToscaHelper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetVMNumOfCores() throws Exception {
