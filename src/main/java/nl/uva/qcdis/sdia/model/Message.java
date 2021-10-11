@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import nl.uva.qcdis.sdia.model.tosca.ToscaTemplate;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
-import java.util.List;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -31,6 +30,20 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Message implements Serializable {
+
+    /**
+     * @return the exception
+     */
+    public String getErrorReport() {
+        return errorReport;
+    }
+
+    /**
+     * @param errorReport
+     */
+    public void setErrorReportn(String errorReport) {
+        this.errorReport = errorReport;
+    }
 
     /**
      * @return the exception
@@ -53,9 +66,10 @@ public class Message implements Serializable {
 
 //    private List<MessageParameter> parameters;
     private ToscaTemplate toscaTemplate;
-    
-    
+
     private Exception exception;
+
+    private String errorReport;
 
     public Long getCreationDate() {
         return this.creationDate;
