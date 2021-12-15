@@ -351,7 +351,8 @@ public class ToscaHelper {
     private NODE_STATES getNodeState(NodeTemplateMap node, String stateName) {
         Map<String, Object> attributes = node.getNodeTemplate().getAttributes();
         if (attributes != null && attributes.containsKey(stateName)) {
-            return NODE_STATES.valueOf((String) attributes.get(stateName));
+            String state = (String) attributes.get(stateName);
+            return NODE_STATES.valueOf(state.toUpperCase());
         }
         return null;
     }
